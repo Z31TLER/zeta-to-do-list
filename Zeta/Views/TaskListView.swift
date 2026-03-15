@@ -92,18 +92,18 @@ struct TaskListView: View {
     private var tasksList: some View {
         ScrollView {
             LazyVStack(spacing: 4) {
-                ForEach(sortedTasks) { task in
+                ForEach(sortedTasks, id: \.objectID) { task in
                     TaskRow(
                         task: task,
                         onToggle: {
-                            viewModel.toggleTaskCompletion(task)
+                            self.viewModel.toggleTaskCompletion(task)
                         },
                         onDelete: {
-                            viewModel.deleteTask(task)
+                            self.viewModel.deleteTask(task)
                         }
                     )
                     .onTapGesture(count: 2) {
-                        editingTask = task
+                        self.editingTask = task
                     }
                 }
             }
