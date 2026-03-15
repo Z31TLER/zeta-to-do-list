@@ -4,6 +4,12 @@ import SwiftUI
 struct ZetaApp: App {
     @AppStorage("themeMode") private var themeMode = 0
     
+    init() {
+        Task {
+            await NotificationManager.shared.checkAuthorizationStatus()
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -96,14 +96,14 @@ struct ScheduledView: View {
                         }
                         
                         VStack(spacing: 4) {
-                            ForEach(tasks) { task in
+                            ForEach(tasks, id: \.objectID) { task in
                                 ScheduledTaskRow(
                                     task: task,
                                     onToggle: {
-                                        viewModel.toggleTaskCompletion(task)
+                                        self.viewModel.toggleTaskCompletion(task)
                                     },
                                     onDelete: {
-                                        viewModel.deleteTask(task)
+                                        self.viewModel.deleteTask(task)
                                     }
                                 )
                             }

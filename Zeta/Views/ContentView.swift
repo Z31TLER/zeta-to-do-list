@@ -197,14 +197,14 @@ struct TodayView: View {
     private var tasksList: some View {
         ScrollView {
             LazyVStack(spacing: 4) {
-                ForEach(todayTasks) { task in
+                ForEach(todayTasks, id: \.objectID) { task in
                     TaskRow(
                         task: task,
                         onToggle: {
-                            viewModel.toggleTaskCompletion(task)
+                            self.viewModel.toggleTaskCompletion(task)
                         },
                         onDelete: {
-                            viewModel.deleteTask(task)
+                            self.viewModel.deleteTask(task)
                         }
                     )
                 }
