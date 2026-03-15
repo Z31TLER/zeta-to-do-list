@@ -16,7 +16,7 @@ extension TaskList {
     }
     
     var tasksArray: [TaskItem] {
-        let set = tasks as? Set<TaskItem> ?? []
+        guard let set = tasks as? Set<TaskItem> else { return [] }
         return set.sorted { $0.order < $1.order }
     }
     

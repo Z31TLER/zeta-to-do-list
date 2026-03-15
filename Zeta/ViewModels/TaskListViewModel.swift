@@ -110,9 +110,15 @@ final class TaskListViewModel: ObservableObject {
     }
     
     func deleteTask(_ task: TaskItem) {
+        let list = task.list
         notificationManager.cancelNotification(for: task)
         modelContext.delete(task)
         saveContext()
+        
+        if let list = list {
+            modelContext.refresh(list, mergeChanges: true)
+        }
+        
         fetchTaskLists()
         fetchScheduledTasks()
     }
