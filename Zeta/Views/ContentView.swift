@@ -27,6 +27,11 @@ struct ContentView: View {
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
     @State private var showingNewListSheet = false
     @State private var newListTitle = ""
+    @AppStorage("selectionColor") private var selectionColor = "blue"
+    
+    private var selectionColorEnum: SelectionColor {
+        SelectionColor(rawValue: selectionColor) ?? .blue
+    }
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -68,6 +73,10 @@ struct ContentView: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(isListSelected(list) ? selectionColorEnum.color.opacity(0.2) : Color.clear)
+                    .cornerRadius(6)
                     .contentShape(Rectangle())
                     .onTapGesture {
                         selectedItem = .list(list)
@@ -108,6 +117,13 @@ struct ContentView: View {
         case .none:
             TodayView(viewModel: viewModel)
         }
+    }
+    
+    private func isListSelected(_ list: TaskList) -> Bool {
+        if case .list(let selectedList) = selectedItem {
+            return selectedList.id == list.id
+        }
+        return false
     }
     
     private var newListSheet: some View {
