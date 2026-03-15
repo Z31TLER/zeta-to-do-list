@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftData
 
 enum NavigationItem: String, CaseIterable, Identifiable {
     case today = "Today"
@@ -17,10 +16,14 @@ enum NavigationItem: String, CaseIterable, Identifiable {
     }
 }
 
+enum SidebarItem: Hashable {
+    case navigation(NavigationItem)
+    case list(TaskList)
+}
+
 struct ContentView: View {
     @StateObject private var viewModel = TaskListViewModel()
-    @State private var selectedItem: NavigationItem? = .today
-    @State private var selectedList: TaskList?
+    @State private var selectedItem: SidebarItem? = .navigation(.today)
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
     @State private var showingNewListSheet = false
     @State private var newListTitle = ""
@@ -39,7 +42,7 @@ struct ContentView: View {
         List(selection: $selectedItem) {
             Section("Views") {
                 ForEach(NavigationItem.allCases) { item in
-                    NavigationLink(value: item) {
+                    NavigationLink(value: SidebarItem.navigation(item)) {
                         Label(item.rawValue, systemImage: item.icon)
                     }
                 }
@@ -57,7 +60,7 @@ struct ContentView: View {
                 }
                 
                 ForEach(viewModel.taskLists) { list in
-                    Button(action: { selectedList = list }) {
+                    NavigationLink(value: SidebarItem.list(list)) {
                         HStack {
                             Image(systemName: "list.bullet")
                             Text(list.title)
@@ -67,7 +70,6 @@ struct ContentView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }
@@ -75,6 +77,27 @@ struct ContentView: View {
         .frame(minWidth: 220)
         .sheet(isPresented: $showingNewListSheet) {
             newListSheet
+        }
+    }
+    
+    @ViewBuilder
+    private var detailContent: some View {
+        switch selectedItem {
+        case .navigation(let item):
+            switch item {
+            case .today:
+                TodayView(viewModel: viewModel)
+            case .scheduled:
+                ScheduledView(viewModel: viewModel)
+            case .settings:
+                SettingsView()
+            }
+        case .list(let list):
+            TaskListView(list: list, viewModel: viewModel, onBack: {
+                selectedItem = .navigation(.today)
+            })
+        case .none:
+            TodayView(viewModel: viewModel)
         }
     }
     
@@ -107,24 +130,6 @@ struct ContentView: View {
         }
         .padding(24)
         .frame(width: 400, height: 200)
-    }
-    
-    @ViewBuilder
-    private var detailContent: some View {
-        if let list = selectedList {
-            TaskListView(list: list, viewModel: viewModel)
-        } else {
-            switch selectedItem {
-            case .today:
-                TodayView(viewModel: viewModel)
-            case .scheduled:
-                ScheduledView(viewModel: viewModel)
-            case .settings:
-                SettingsView()
-            case .none:
-                TodayView(viewModel: viewModel)
-            }
-        }
     }
 }
 

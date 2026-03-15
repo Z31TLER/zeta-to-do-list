@@ -3,7 +3,7 @@ import SwiftUI
 struct TaskListView: View {
     let list: TaskList
     @ObservedObject var viewModel: TaskListViewModel
-    @Environment(\.dismiss) private var dismiss
+    var onBack: (() -> Void)?
     
     @State private var newTaskTitle = ""
     @State private var newTaskScheduledDate: Date?
@@ -37,7 +37,7 @@ struct TaskListView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Button(action: { dismiss() }) {
+                Button(action: { onBack?() }) {
                     Image(systemName: "chevron.left")
                         .font(.title3)
                 }
