@@ -159,7 +159,7 @@ struct SettingsView: View {
                     Text("Zeta")
                         .font(.headline)
                     Spacer()
-                    Text("Version 1.5.0")
+                    Text("Version 1.5.1")
                         .foregroundColor(.secondary)
                 }
                 
