@@ -47,8 +47,20 @@ struct ContentView: View {
         List(selection: $selectedItem) {
             Section("Views") {
                 ForEach(NavigationItem.allCases) { item in
-                    NavigationLink(value: SidebarItem.navigation(item)) {
-                        Label(item.rawValue, systemImage: item.icon)
+                    HStack {
+                        Image(systemName: item.icon)
+                            .foregroundColor(isNavigationSelected(item) ? selectionColorEnum.color : .secondary)
+                        Text(item.rawValue)
+                            .foregroundColor(isNavigationSelected(item) ? selectionColorEnum.color : .primary)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(isNavigationSelected(item) ? selectionColorEnum.color.opacity(0.2) : Color.clear)
+                    .cornerRadius(6)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        selectedItem = .navigation(item)
                     }
                 }
             }
@@ -67,7 +79,9 @@ struct ContentView: View {
                 ForEach(viewModel.taskLists) { list in
                     HStack {
                         Image(systemName: "list.bullet")
+                            .foregroundColor(isListSelected(list) ? selectionColorEnum.color : .secondary)
                         Text(list.title)
+                            .foregroundColor(isListSelected(list) ? selectionColorEnum.color : .primary)
                         Spacer()
                         Text("\(list.completedCount)/\(list.totalCount)")
                             .font(.caption)
@@ -83,6 +97,9 @@ struct ContentView: View {
                     }
                     .contextMenu {
                         Button(role: .destructive) {
+                            if isListSelected(list) {
+                                selectedItem = .navigation(.today)
+                            }
                             viewModel.deleteTaskList(list)
                         } label: {
                             Label("Delete List", systemImage: "trash")
@@ -121,7 +138,14 @@ struct ContentView: View {
     
     private func isListSelected(_ list: TaskList) -> Bool {
         if case .list(let selectedList) = selectedItem {
-            return selectedList.id == list.id
+            return selectedList.objectID == list.objectID
+        }
+        return false
+    }
+    
+    private func isNavigationSelected(_ item: NavigationItem) -> Bool {
+        if case .navigation(let selectedItem) = selectedItem {
+            return selectedItem == item
         }
         return false
     }
