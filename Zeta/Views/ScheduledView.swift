@@ -2,6 +2,10 @@ import SwiftUI
 
 struct ScheduledView: View {
     @ObservedObject var viewModel: TaskListViewModel
+    @State private var showingNewTaskSheet = false
+    @State private var newTaskTitle = ""
+    @State private var newTaskDate = Date()
+    @State private var selectedListForTask: TaskList?
     
     var groupedTasks: [(Date, [TaskItem])] {
         let calendar = Calendar.current
@@ -26,6 +30,9 @@ struct ScheduledView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(nsColor: .windowBackgroundColor))
+        .sheet(isPresented: $showingNewTaskSheet) {
+            newTaskSheet
+        }
     }
     
     private var header: some View {
@@ -34,6 +41,13 @@ struct ScheduledView: View {
                 .font(.system(size: 28, weight: .bold))
             
             Spacer()
+            
+            Button(action: { showingNewTaskSheet = true }) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.title2)
+                    .foregroundColor(.blue)
+            }
+            .buttonStyle(.plain)
             
             Text("\(viewModel.scheduledTasks.count) tasks")
                 .font(.subheadline)
@@ -55,6 +69,10 @@ struct ScheduledView: View {
             Text("Schedule tasks from your lists to see them here")
                 .font(.body)
                 .foregroundColor(.secondary)
+            Button("Schedule a Task") {
+                showingNewTaskSheet = true
+            }
+            .buttonStyle(.borderedProminent)
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -101,6 +119,59 @@ struct ScheduledView: View {
             }
             .padding(.vertical, 16)
         }
+    }
+    
+    private var newTaskSheet: some View {
+        VStack(spacing: 20) {
+            Text("New Scheduled Task")
+                .font(.title2.bold())
+            
+            TextField("Task title", text: $newTaskTitle)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: 300)
+            
+            DatePicker("Schedule for", selection: $newTaskDate, displayedComponents: [.date, .hourAndMinute])
+                .labelsHidden()
+            
+            if viewModel.taskLists.isEmpty {
+                Text("Create a list first to add tasks")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            } else {
+                Picker("Add to list", selection: $selectedListForTask) {
+                    Text("Select a list").tag(nil as TaskList?)
+                    ForEach(viewModel.taskLists) { list in
+                        Text(list.title).tag(list as TaskList?)
+                    }
+                }
+                .labelsHidden()
+                .frame(width: 300)
+            }
+            
+            HStack {
+                Button("Cancel") {
+                    newTaskTitle = ""
+                    newTaskDate = Date()
+                    selectedListForTask = nil
+                    showingNewTaskSheet = false
+                }
+                .keyboardShortcut(.cancelAction)
+                
+                Button("Create") {
+                    if let list = selectedListForTask, !newTaskTitle.isEmpty {
+                        viewModel.createTask(in: list, title: newTaskTitle, scheduledDate: newTaskDate)
+                        newTaskTitle = ""
+                        newTaskDate = Date()
+                        selectedListForTask = nil
+                        showingNewTaskSheet = false
+                    }
+                }
+                .keyboardShortcut(.defaultAction)
+                .disabled(newTaskTitle.isEmpty || selectedListForTask == nil)
+            }
+        }
+        .padding(24)
+        .frame(width: 400, height: 320)
     }
     
     private func formattedDate(_ date: Date) -> String {

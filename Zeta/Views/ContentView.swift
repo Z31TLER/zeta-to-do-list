@@ -22,6 +22,8 @@ struct ContentView: View {
     @State private var selectedItem: NavigationItem? = .today
     @State private var selectedList: TaskList?
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    @State private var showingNewListSheet = false
+    @State private var newListTitle = ""
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -43,7 +45,17 @@ struct ContentView: View {
                 }
             }
             
-            Section("Lists") {
+            Section {
+                HStack {
+                    Text("Lists")
+                        .font(.headline)
+                    Spacer()
+                    Button(action: { showingNewListSheet = true }) {
+                        Image(systemName: "plus")
+                    }
+                    .buttonStyle(.plain)
+                }
+                
                 ForEach(viewModel.taskLists) { list in
                     Button(action: { selectedList = list }) {
                         HStack {
@@ -61,6 +73,40 @@ struct ContentView: View {
         }
         .listStyle(.sidebar)
         .frame(minWidth: 220)
+        .sheet(isPresented: $showingNewListSheet) {
+            newListSheet
+        }
+    }
+    
+    private var newListSheet: some View {
+        VStack(spacing: 20) {
+            Text("New List")
+                .font(.title2.bold())
+            
+            TextField("List name", text: $newListTitle)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: 300)
+            
+            HStack {
+                Button("Cancel") {
+                    newListTitle = ""
+                    showingNewListSheet = false
+                }
+                .keyboardShortcut(.cancelAction)
+                
+                Button("Create") {
+                    if !newListTitle.isEmpty {
+                        viewModel.createTaskList(title: newListTitle)
+                        newListTitle = ""
+                        showingNewListSheet = false
+                    }
+                }
+                .keyboardShortcut(.defaultAction)
+                .disabled(newListTitle.isEmpty)
+            }
+        }
+        .padding(24)
+        .frame(width: 400, height: 200)
     }
     
     @ViewBuilder
