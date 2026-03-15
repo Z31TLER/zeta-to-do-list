@@ -58,14 +58,6 @@ struct SettingsView: View {
                 Text("Receive reminders for scheduled tasks")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-                
-                Button("Send Test Notification") {
-                    Task {
-                        await notificationManager.sendTestNotification()
-                    }
-                }
-                .buttonStyle(.bordered)
-                .padding(.top, 8)
             }
             .padding(16)
             .background(
@@ -115,7 +107,7 @@ struct SettingsView: View {
                     Text("Zeta")
                         .font(.headline)
                     Spacer()
-                    Text("Version 1.0.0")
+                    Text("Version 1.4.0")
                         .foregroundColor(.secondary)
                 }
                 
