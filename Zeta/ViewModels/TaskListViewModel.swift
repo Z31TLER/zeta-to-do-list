@@ -77,14 +77,14 @@ final class TaskListViewModel: ObservableObject {
         newTask.list = list
         newTask.scheduledDate = scheduledDate
         
+        saveContext()
+        fetchScheduledTasks()
+        
         if let date = scheduledDate {
             Task {
                 await notificationManager.scheduleNotification(for: newTask)
             }
         }
-        
-        saveContext()
-        fetchScheduledTasks()
     }
     
     func updateTask(_ task: TaskItem, title: String, scheduledDate: Date?) {
@@ -93,14 +93,14 @@ final class TaskListViewModel: ObservableObject {
         task.title = title
         task.scheduledDate = scheduledDate
         
-        if let date = scheduledDate {
+        saveContext()
+        fetchScheduledTasks()
+        
+        if scheduledDate != nil {
             Task {
                 await notificationManager.scheduleNotification(for: task)
             }
         }
-        
-        saveContext()
-        fetchScheduledTasks()
     }
     
     func toggleTaskCompletion(_ task: TaskItem) {
