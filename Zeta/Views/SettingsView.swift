@@ -49,17 +49,23 @@ struct SettingsView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 Toggle("Enable Notifications", isOn: $notificationsEnabled)
-                    .onChange(of: notificationsEnabled) { newValue in
-                        if newValue {
-                            Task {
-                                await notificationManager.requestAuthorization()
-                            }
+                    .onChange(of: notificationsEnabled) { _ in
+                        Task {
+                            await notificationManager.requestAuthorization()
                         }
                     }
                 
                 Text("Receive reminders for scheduled tasks")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                
+                Button("Send Test Notification") {
+                    Task {
+                        await notificationManager.sendTestNotification()
+                    }
+                }
+                .buttonStyle(.bordered)
+                .padding(.top, 8)
             }
             .padding(16)
             .background(
