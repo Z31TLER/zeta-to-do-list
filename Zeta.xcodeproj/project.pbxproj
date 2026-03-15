@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0AD0B9ADBCD2B5E8760D1CD2990D02CF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA294B4782060E653196F98D00005C45 /* DataController.swift */; };
+		687CDB340D692D6538B0C4794F34EF1C /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B348C046816DC660A8B4094AAA01C0C /* TaskListViewModel.swift */; };
+		79AB4D7FD362F88340397DB6A687469C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74744E62FA87FC1E5BFB52C5DA7DBF4 /* ProgressBar.swift */; };
+		7B63DA60CA9C79A5C7DFE51BA19EC274 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44BA97CC760EC5765ED03FF6567111 /* SettingsView.swift */; };
+		86E5D30169F9AD90857982136DBD297F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566DB60140F1504CE3105A0BDF65B9A1 /* Assets.xcassets */; };
+		9271E486613F6ADC1DFA1D691386CE4C /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D479E25299EB6210AB8723454145FC /* TaskRow.swift */; };
+		948C38808E08F3B2327032D660C66F4B /* Zeta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B1ABCA4B5D56B747376419D018D1D24 /* Zeta.xcdatamodeld */; };
+		AB69D7AB15D1F1AA780AC417B1A1B82F /* ZetaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3AF852C049DF811B77557C9FF5BC2B /* ZetaApp.swift */; };
+		AEE0BB844F9E7DA5903BD5F97015B2CD /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37813C7D59B18E9373FEEBC1468A2E18 /* Task.swift */; };
+		B4249F78040F4E64DE23B575BEDAF9BC /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60D7E40701B72E651C39C4979539372 /* TaskList.swift */; };
+		B643820525EC047C4C5B156880E47835 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35566D9281ADEA44DD13FA63ED04770C /* ContentView.swift */; };
+		E82B1F2D287174158DF27DF5FAD82FA7 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DC6CE973C5BC4C86ABE3AB65238C5A /* TaskListView.swift */; };
+		E98B3632667C013D8745BA41F8C6D3B8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DC821E0D1247147054B4F57D79969 /* NotificationManager.swift */; };
+		F1378825B43F9D28447029983FE3BC20 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74027E731D73E0A941EB0E068571CA3 /* HomeView.swift */; };
+		F94DD3F5C63DB5CA9FFE356F73589B79 /* ScheduledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61BCBC1C9BFD4EB1E3D3828356DFEA /* ScheduledView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		112B06DA6DC734192F0D51870BCAC65B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C61BCBC1C9BFD4EB1E3D3828356DFEA /* ScheduledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledView.swift; sourceTree = "<group>"; };
+		3134F54F129B589D0305561FE4FCF3FA /* Zeta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zeta.entitlements; sourceTree = "<group>"; };
+		35566D9281ADEA44DD13FA63ED04770C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		37813C7D59B18E9373FEEBC1468A2E18 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		38D479E25299EB6210AB8723454145FC /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
+		4B348C046816DC660A8B4094AAA01C0C /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		566DB60140F1504CE3105A0BDF65B9A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		591C82E6E6A5E4135246C6F4631C93B3 /* Zeta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zeta.xcdatamodel; sourceTree = "<group>"; };
+		6D6DC821E0D1247147054B4F57D79969 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		A74027E731D73E0A941EB0E068571CA3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BF44BA97CC760EC5765ED03FF6567111 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C74744E62FA87FC1E5BFB52C5DA7DBF4 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		CA294B4782060E653196F98D00005C45 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		CDFAD65BF38D5981888467E6F9D088E1 /* Zeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE3AF852C049DF811B77557C9FF5BC2B /* ZetaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZetaApp.swift; sourceTree = "<group>"; };
+		F2DC6CE973C5BC4C86ABE3AB65238C5A /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		F60D7E40701B72E651C39C4979539372 /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1CDD399E24158ABD8DADA7D088E83E8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDFAD65BF38D5981888467E6F9D088E1 /* Zeta.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D9985690E210A0397ED16434EE32FB7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EE3AF852C049DF811B77557C9FF5BC2B /* ZetaApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		64C7C3B568602844F7174FD0E2456226 /* Zeta */ = {
+			isa = PBXGroup;
+			children = (
+				112B06DA6DC734192F0D51870BCAC65B /* Info.plist */,
+				3134F54F129B589D0305561FE4FCF3FA /* Zeta.entitlements */,
+				3D9985690E210A0397ED16434EE32FB7 /* App */,
+				A3EC58DB1A6FC7CF37F74FC228DBB7D8 /* Components */,
+				E6FDFD654B123E708E72ACA2E7BE4F3D /* Models */,
+				AD468AF0B12F7437D1CEEF7972C97222 /* Persistence */,
+				6F3E8FF23341E6772CF619BC567365C7 /* Resources */,
+				F91C05C3FCB0F31CDC7777F83492C6B0 /* ViewModels */,
+				D2FFDA0C872FBE3177DF2BD4A4E0FA18 /* Views */,
+			);
+			path = Zeta;
+			sourceTree = "<group>";
+		};
+		6F3E8FF23341E6772CF619BC567365C7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				566DB60140F1504CE3105A0BDF65B9A1 /* Assets.xcassets */,
+				0B1ABCA4B5D56B747376419D018D1D24 /* Zeta.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A3EC58DB1A6FC7CF37F74FC228DBB7D8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C74744E62FA87FC1E5BFB52C5DA7DBF4 /* ProgressBar.swift */,
+				38D479E25299EB6210AB8723454145FC /* TaskRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AD468AF0B12F7437D1CEEF7972C97222 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				CA294B4782060E653196F98D00005C45 /* DataController.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		D2FFDA0C872FBE3177DF2BD4A4E0FA18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35566D9281ADEA44DD13FA63ED04770C /* ContentView.swift */,
+				A74027E731D73E0A941EB0E068571CA3 /* HomeView.swift */,
+				1C61BCBC1C9BFD4EB1E3D3828356DFEA /* ScheduledView.swift */,
+				BF44BA97CC760EC5765ED03FF6567111 /* SettingsView.swift */,
+				F2DC6CE973C5BC4C86ABE3AB65238C5A /* TaskListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E6FDFD654B123E708E72ACA2E7BE4F3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				37813C7D59B18E9373FEEBC1468A2E18 /* Task.swift */,
+				F60D7E40701B72E651C39C4979539372 /* TaskList.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFCAB7B68CEC2880E2D4AD499EF43041 = {
+			isa = PBXGroup;
+			children = (
+				64C7C3B568602844F7174FD0E2456226 /* Zeta */,
+				1CDD399E24158ABD8DADA7D088E83E8D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F91C05C3FCB0F31CDC7777F83492C6B0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6D6DC821E0D1247147054B4F57D79969 /* NotificationManager.swift */,
+				4B348C046816DC660A8B4094AAA01C0C /* TaskListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D53E27588AE3A99D8B709C0F2110AA6C /* Zeta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8770E67149F6886A7F1C6B44730EC42 /* Build configuration list for PBXNativeTarget "Zeta" */;
+			buildPhases = (
+				3AE63086462F8C34DFFE5C4FBD1C4898 /* Sources */,
+				629CD0DDB0D2620164D01E9D1CF5C086 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Zeta;
+			productName = Zeta;
+			productReference = CDFAD65BF38D5981888467E6F9D088E1 /* Zeta.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08DF9DD09E37D87041A0A23A61690340 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					D53E27588AE3A99D8B709C0F2110AA6C = {
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 46C971ECA263E75D6EA6470ACC87FE11 /* Build configuration list for PBXProject "Zeta" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EFCAB7B68CEC2880E2D4AD499EF43041;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D53E27588AE3A99D8B709C0F2110AA6C /* Zeta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		629CD0DDB0D2620164D01E9D1CF5C086 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86E5D30169F9AD90857982136DBD297F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AE63086462F8C34DFFE5C4FBD1C4898 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B643820525EC047C4C5B156880E47835 /* ContentView.swift in Sources */,
+				0AD0B9ADBCD2B5E8760D1CD2990D02CF /* DataController.swift in Sources */,
+				F1378825B43F9D28447029983FE3BC20 /* HomeView.swift in Sources */,
+				E98B3632667C013D8745BA41F8C6D3B8 /* NotificationManager.swift in Sources */,
+				79AB4D7FD362F88340397DB6A687469C /* ProgressBar.swift in Sources */,
+				F94DD3F5C63DB5CA9FFE356F73589B79 /* ScheduledView.swift in Sources */,
+				7B63DA60CA9C79A5C7DFE51BA19EC274 /* SettingsView.swift in Sources */,
+				AEE0BB844F9E7DA5903BD5F97015B2CD /* Task.swift in Sources */,
+				B4249F78040F4E64DE23B575BEDAF9BC /* TaskList.swift in Sources */,
+				E82B1F2D287174158DF27DF5FAD82FA7 /* TaskListView.swift in Sources */,
+				687CDB340D692D6538B0C4794F34EF1C /* TaskListViewModel.swift in Sources */,
+				9271E486613F6ADC1DFA1D691386CE4C /* TaskRow.swift in Sources */,
+				948C38808E08F3B2327032D660C66F4B /* Zeta.xcdatamodeld in Sources */,
+				AB69D7AB15D1F1AA780AC417B1A1B82F /* ZetaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		62BBD2B68285887F59EE58D306AA50C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = Zeta;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		7AD3D8C1B525EAC025CED6C1271D2FCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Zeta/Zeta.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Zeta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeta.app;
+			};
+			name = Release;
+		};
+		D4B577F7ADD6298EB115E005F42EE84B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = Zeta;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		EB020F1CC709944EBF669576C2D34727 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Zeta/Zeta.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Zeta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zeta.app;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46C971ECA263E75D6EA6470ACC87FE11 /* Build configuration list for PBXProject "Zeta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62BBD2B68285887F59EE58D306AA50C2 /* Debug */,
+				D4B577F7ADD6298EB115E005F42EE84B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D8770E67149F6886A7F1C6B44730EC42 /* Build configuration list for PBXNativeTarget "Zeta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB020F1CC709944EBF669576C2D34727 /* Debug */,
+				7AD3D8C1B525EAC025CED6C1271D2FCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "";
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B1ABCA4B5D56B747376419D018D1D24 /* Zeta.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				591C82E6E6A5E4135246C6F4631C93B3 /* Zeta.xcdatamodel */,
+			);
+			currentVersion = 591C82E6E6A5E4135246C6F4631C93B3 /* Zeta.xcdatamodel */;
+			path = Zeta.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 08DF9DD09E37D87041A0A23A61690340 /* Project object */;
+}
