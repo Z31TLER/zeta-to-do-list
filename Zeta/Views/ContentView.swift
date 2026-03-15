@@ -61,22 +61,22 @@ struct ContentView: View {
                 
                 ForEach(viewModel.taskLists) { list in
                     HStack {
-                        NavigationLink(value: SidebarItem.list(list)) {
-                            HStack {
-                                Image(systemName: "list.bullet")
-                                Text(list.title)
-                                Spacer()
-                                Text("\(list.completedCount)/\(list.totalCount)")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                        .contextMenu {
-                            Button(role: .destructive) {
-                                viewModel.deleteTaskList(list)
-                            } label: {
-                                Label("Delete List", systemImage: "trash")
-                            }
+                        Image(systemName: "list.bullet")
+                        Text(list.title)
+                        Spacer()
+                        Text("\(list.completedCount)/\(list.totalCount)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        selectedItem = .list(list)
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            viewModel.deleteTaskList(list)
+                        } label: {
+                            Label("Delete List", systemImage: "trash")
                         }
                     }
                 }
