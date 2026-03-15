@@ -4,8 +4,24 @@ struct ScheduledView: View {
     @ObservedObject var viewModel: TaskListViewModel
     @State private var showingNewTaskSheet = false
     @State private var newTaskTitle = ""
-    @State private var newTaskDate = Date()
+    @State private var newTaskDate: Date = Date()
     @State private var selectedListForTask: TaskList?
+    
+    private static func roundedToMinute(date: Date) -> Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        components.second = 0
+        return calendar.date(from: components) ?? date
+    }
+    
+    private func roundedToMinute(date: Date) -> Date {
+        Self.roundedToMinute(date: date)
+    }
+    
+    init(viewModel: TaskListViewModel) {
+        self.viewModel = viewModel
+        _newTaskDate = State(initialValue: Self.roundedToMinute(date: Date()))
+    }
     
     var groupedTasks: [(Date, [TaskItem])] {
         let calendar = Calendar.current
@@ -130,7 +146,10 @@ struct ScheduledView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 300)
             
-            DatePicker("Schedule for", selection: $newTaskDate, displayedComponents: [.date, .hourAndMinute])
+            DatePicker("Schedule for", selection: Binding(
+                get: { newTaskDate },
+                set: { newTaskDate = roundedToMinute(date: $0) }
+            ), displayedComponents: [.date, .hourAndMinute])
                 .labelsHidden()
             
             if viewModel.taskLists.isEmpty {
@@ -151,7 +170,7 @@ struct ScheduledView: View {
             HStack {
                 Button("Cancel") {
                     newTaskTitle = ""
-                    newTaskDate = Date()
+                    newTaskDate = roundedToMinute(date: Date())
                     selectedListForTask = nil
                     showingNewTaskSheet = false
                 }
@@ -161,7 +180,7 @@ struct ScheduledView: View {
                     if let list = selectedListForTask, !newTaskTitle.isEmpty {
                         viewModel.createTask(in: list, title: newTaskTitle, scheduledDate: newTaskDate)
                         newTaskTitle = ""
-                        newTaskDate = Date()
+                        newTaskDate = roundedToMinute(date: Date())
                         selectedListForTask = nil
                         showingNewTaskSheet = false
                     }

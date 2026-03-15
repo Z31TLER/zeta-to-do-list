@@ -10,6 +10,13 @@ struct TaskListView: View {
     @State private var showingDatePicker = false
     @State private var editingTask: TaskItem?
     
+    private func roundedToMinute(date: Date) -> Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        components.second = 0
+        return calendar.date(from: components) ?? date
+    }
+    
     var sortedTasks: [TaskItem] {
         list.tasksArray
     }
@@ -118,8 +125,8 @@ struct TaskListView: View {
                 DatePicker(
                     "Schedule",
                     selection: Binding(
-                        get: { newTaskScheduledDate ?? Date() },
-                        set: { newTaskScheduledDate = $0 }
+                        get: { newTaskScheduledDate ?? roundedToMinute(date: Date()) },
+                        set: { newTaskScheduledDate = roundedToMinute(date: $0) }
                     ),
                     displayedComponents: [.date, .hourAndMinute]
                 )

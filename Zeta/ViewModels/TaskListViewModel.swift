@@ -75,12 +75,20 @@ final class TaskListViewModel: ObservableObject {
         newTask.createdAt = Date()
         newTask.order = list.tasksArray.count
         newTask.list = list
-        newTask.scheduledDate = scheduledDate
+        
+        if let date = scheduledDate {
+            let calendar = Calendar.current
+            var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            components.second = 0
+            newTask.scheduledDate = calendar.date(from: components)
+        } else {
+            newTask.scheduledDate = nil
+        }
         
         saveContext()
         fetchScheduledTasks()
         
-        if let date = scheduledDate {
+        if let date = newTask.scheduledDate {
             Task {
                 await notificationManager.scheduleNotification(for: newTask)
             }
@@ -91,12 +99,20 @@ final class TaskListViewModel: ObservableObject {
         notificationManager.cancelNotification(for: task)
         
         task.title = title
-        task.scheduledDate = scheduledDate
+        
+        if let date = scheduledDate {
+            let calendar = Calendar.current
+            var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            components.second = 0
+            task.scheduledDate = calendar.date(from: components)
+        } else {
+            task.scheduledDate = nil
+        }
         
         saveContext()
         fetchScheduledTasks()
         
-        if scheduledDate != nil {
+        if task.scheduledDate != nil {
             Task {
                 await notificationManager.scheduleNotification(for: task)
             }
