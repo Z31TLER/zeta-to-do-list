@@ -54,7 +54,7 @@ Zeta is a clean, focused task management app that helps you organize your daily 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Z31TLER/zeta.git
+   git clone https://github.com/Z31TLER/zeta-to-do-list.git
    cd zeta
    ```
 
