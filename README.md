@@ -45,7 +45,7 @@ Zeta is a clean, focused task management app that helps you organize your daily 
 
 ### Pre-built Application
 
-1. Download the latest release (`.dmg` file) from the [Releases](https://github.com/Z31TLER/zeta/releases) page
+1. Download the latest release (`.dmg` file) from the [Releases](https://github.com/Z31TLER/zeta-to-do-list/releases) page
 2. Open the downloaded `.dmg` file
 3. Drag **Zeta.app** to your Applications folder
 4. Launch Zeta from your Applications folder or Spotlight
