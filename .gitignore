@@ -1,0 +1,56 @@
+# Xcode
+.DS_Store
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcuserstate
+project.xcworkspace
+xcuserdata
+
+# Xcode - various versions
+*.xcodeproj/xcuserdata
+*.xcworkspace/xcuserdata
+
+# Swift Package Manager
+.swiftpm
+Packages
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# App icons
+*.icns
+
+# Build products (keep Release for distribution)
+Release/
+build/
+
+# Xcode DerivedData
+DerivedData/
+*.dSYM.zip
+*.dSYM
+
+# Xcode Archive
+*.xcarchive
+
+# Xcode Inspector
+*.ids
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/Readme.md
